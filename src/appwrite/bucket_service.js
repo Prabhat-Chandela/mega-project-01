@@ -1,5 +1,5 @@
 import config from "../config/config";
-import { Client, ID, Storage,  Query } from "appwrite";
+import { Client, ID, Storage } from "appwrite";
 
 export class BucketService {
 
@@ -37,7 +37,7 @@ export class BucketService {
 
     async getFilePreview(fileId) {
         try {
-            await  storage.getFilePreview(config.appwriteBucketId, fileId);
+            await  Storage.getFilePreview(config.appwriteBucketId, fileId);
         } catch (error) {
             console.log("Appwrite::deleteFile::error::", error)
             return false;
@@ -47,4 +47,5 @@ export class BucketService {
 
 
 const bucketService = new BucketService();
+
 export default bucketService;

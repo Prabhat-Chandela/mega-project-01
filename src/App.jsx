@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import authService from "./appwrite/auth_service"
 import { login, logout } from "./store/authSlice"
 import { Header, Footer } from "./components"
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -28,7 +29,9 @@ function App() {
       <>
         <div className="w-screen h-screen bg-gray-950 text-white">
           <Header />
-          mega project
+          <main>
+            <Outlet />
+          </main>
           <Footer />
         </div>
       </>

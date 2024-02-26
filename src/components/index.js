@@ -5,7 +5,11 @@ import Container from "./Container/Container";
 import LogoutBtn from "./Header/LogoutBtn";
 import Login from "./Login/Login";
 import Postcard from "./Postcard/Postcard";
-import Select from "./Select/Select"
+import Select from "./Select/Select";
+import RTE from "./RTE/RTE";
+import PostForm from "./PostForm/PostForm";
+import Protectedlayout from "./Protectedlayout/Protectedlayout";
+import Signup from "./Signup/Signup";
 
 export {
     Header,
@@ -15,5 +19,9 @@ export {
     LogoutBtn,
     Login,
     Postcard,
-    Select
+    Select,
+    RTE,
+    PostForm,
+    Protectedlayout,
+    Signup,
 }
