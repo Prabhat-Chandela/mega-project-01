@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Container, Postcard } from "../components/index"
 import  databaseService  from "../appwrite/database_service"
+import { getAllPosts } from "../store/postSlice"
+import { useSelector, useDispatch } from 'react-redux'
 
 function AllPosts() {
     
-    const [posts, setPosts] = useState([])
+    const allPosts = useSelector((state)=> state.post.allPosts);
+    const dispatch = useDispatch();
+
 
     useEffect(() => {
         databaseService.getPosts([])
             .then((posts) => {
                 if (posts) {
-                    setPosts(posts.documents)
+                    dispatch(getAllPosts(posts.documents))
                 }
             })
     }, [])
@@ -19,7 +23,7 @@ function AllPosts() {
         <div className='w-full py-8'>
             <Container>
                 <div className='flex flex-wrap'>
-                    {posts.map((post) => (
+                    {allPosts.map((post) => (
                       <div key={post.$id} className='p-2 w-1/4'>
                         <Postcard post={post}/>
                       </div>

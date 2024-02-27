@@ -1,28 +1,45 @@
-import React, { useState, useEffect } from 'react'
-import dabaseService  from "../appwrite/database_service"
+import React, { useEffect } from 'react'
+import dabaseService from "../appwrite/database_service"
 import { Container, Postcard } from "../components/index"
+import { getAllPosts } from "../store/postSlice"
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 function Home() {
-    const [posts, setPosts] = useState([])
+
+    const navigate = useNavigate()
+    const allPosts = useSelector((state) => state.post.allPosts);
+    const userStatus = useSelector((state) => state.auth.status);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        dabaseService.getPosts()
-            .then((posts) => {
-                if (posts) {
-                    setPosts(posts.documents)
-                }
-            })
-    }, [])
+
+        if (userStatus === false) {
+
+            navigate('/signup')
+
+        } else {
+
+            dabaseService.getPosts()
+                .then((posts) => {
+                    if (posts) {
+                        dispatch(getAllPosts(posts.documents))
+                    }
+                })
+        }
+
+    }, [userStatus])
 
 
-    if (posts.length === 0) {
+
+    if (allPosts.length === 0) {
         return (
             <div className="w-full py-8 mt-4 text-center">
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
                             <h1 className="text-2xl font-bold hover:text-gray-500">
-                                No Posts to read . 
+                                No Posts to read .
                             </h1>
                         </div>
                     </div>
@@ -32,9 +49,9 @@ function Home() {
     }
     return (
         <div className='w-full py-8'>
-              <Container>
+            <Container>
                 <div className='flex flex-wrap'>
-                    {posts.map((post) => (
+                    {allPosts.map((post) => (
                         <div key={post.$id} className='p-2 w-1/4'>
                             <Postcard {...post} />
                         </div>

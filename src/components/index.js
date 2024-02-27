@@ -10,6 +10,8 @@ import RTE from "./RTE/RTE";
 import PostForm from "./PostForm/PostForm";
 import Protectedlayout from "./Protectedlayout/Protectedlayout";
 import Signup from "./Signup/Signup";
+import Logo from "./Logo/Logo";
+import Button from "./Button/Button";
 
 export {
     Header,
@@ -24,4 +26,6 @@ export {
     PostForm,
     Protectedlayout,
     Signup,
+    Logo,
+    Button,
 }

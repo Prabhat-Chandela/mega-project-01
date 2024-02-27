@@ -27,7 +27,7 @@ function App() {
   return !loading ?
     (
       <>
-        <div className="w-screen h-screen bg-gray-950 text-white">
+        <div className="w-screen h-screen bg-white text-gray-950">
           <Header />
           <main>
             <Outlet />
@@ -36,7 +36,7 @@ function App() {
         </div>
       </>
     )
-    : (<div className="w-screen h-screen bg-gray-950 text-white">Loading......</div>)
+    : (<div className="w-screen h-screen bg-white text-gray-950">Loading......</div>)
 
 }
 

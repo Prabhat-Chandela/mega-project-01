@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Inputbox, Select, RTE } from '../index'
+import { Inputbox, Select, RTE, Button } from '../index'
 import bucketService from '../../appwrite/bucket_service'
 import  databaseService  from '../../appwrite/database_service'
 import { useNavigate } from 'react-router-dom'
@@ -122,11 +122,9 @@ function PostForm(post) {
                     {...register("status", { required: true })}
                 />
 
-                <button type="submit"
-                    // bgColor={post ? "bg-green-500" : undefined} 
-                    className="w-full">
+                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} >
                     {post ? "Update" : "Submit"}
-                </button>
+                </Button>
 
             </div>
         </form>

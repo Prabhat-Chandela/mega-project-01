@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, LogoutBtn } from '../index'
+import { Container, LogoutBtn, Logo } from '../index'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
@@ -36,17 +36,19 @@ function Header() {
   ]
 
   return (
-    <header>
+    <header className='bg-slate-950 w-full  px-5 py-3'>
       <Container>
-        <nav className='flex'>
+        <nav className='flex justify-between w-full text-white items-center'>
 
           <div>
-            <Link to='/'>
-              <div>Logo</div>
-            </Link>
+
+              <div>
+                <Logo padding={"p-1"} width={"w-3"} />
+              </div>
+           
           </div>
 
-          <ul className='flex'>
+          <ul className='flex gap-5 px-3 font-bold text-md '>
             {navItems.map((item) => item.active ? (
 
               <li key={item.name}>
@@ -57,7 +59,7 @@ function Header() {
 
             ) : null)}
 
-            {authStatus && (<li><LogoutBtn/></li>)}
+            {authStatus && (<li><LogoutBtn /></li>)}
 
           </ul>
 
