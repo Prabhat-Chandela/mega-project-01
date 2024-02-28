@@ -27,9 +27,9 @@ function App() {
   return !loading ?
     (
       <>
-        <div className="w-screen h-screen bg-white text-gray-950">
+        <div className="w-screen h-screen bg-white text-gray-950 flex flex-col">
           <Header />
-          <main>
+          <main className="flex-1">
             <Outlet />
           </main>
           <Footer />

@@ -6,18 +6,20 @@ import { useSelector, useDispatch } from 'react-redux'
 
 function AllPosts() {
     
-    const allPosts = useSelector((state)=> state.post.allPosts);
     const dispatch = useDispatch();
-
+    const allPosts = useSelector((state)=> state.post.allPosts);
+    
 
     useEffect(() => {
-        databaseService.getPosts([])
+        databaseService.getPosts()
             .then((posts) => {
+    
                 if (posts) {
-                    dispatch(getAllPosts(posts.documents))
+                    dispatch(getAllPosts(posts))
                 }
             })
     }, [])
+   
 
     return (
         <div className='w-full py-8'>

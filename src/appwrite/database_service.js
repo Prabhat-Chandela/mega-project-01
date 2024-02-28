@@ -69,7 +69,7 @@ export class DatabaseService {
 
     async getPosts(queries = [Query.equal("status", "active")]) {
         try {
-            await this.databases.listDocuments(config.appwriteDatabaseId, config.appwriteCollectionId , queries);
+           return await this.databases.listDocuments(config.appwriteDatabaseId, config.appwriteCollectionId , queries);
 
         } catch (error) {
             console.log("Appwrite::getPosts::error::", error)

@@ -2,18 +2,18 @@ import React, { useCallback, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { Inputbox, Select, RTE, Button } from '../index'
 import bucketService from '../../appwrite/bucket_service'
-import  databaseService  from '../../appwrite/database_service'
+import databaseService from '../../appwrite/database_service'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-function PostForm(post) {
+function PostForm({post}) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
             title: post?.title || '',
             slug: post?.slug || '',
             content: post?.content || '',
             status: post?.status || 'active',
-
+            
         }
     })
 
@@ -22,7 +22,7 @@ function PostForm(post) {
 
     const submit = async (data) => {
         if (post) {
-            const file = data.image[0] ? await bucketService.uploadFile(data.image[0]) : null
+            const file = data.featuredImage[0] ? await bucketService.uploadFile(data.featuredImage[0]) : null
 
             if (file) {
                 bucketService.deleteFile(post.featuredImage)
@@ -34,13 +34,14 @@ function PostForm(post) {
             }
 
         } else {
-            const file = data.image[0] ? await bucketService.uploadFile(data.image[0]) : null;
-
+            const file = await bucketService.uploadFile(data.featuredImage[0]);
+            console.log("this is file" , file)
             if (file) {
-                const fileId = file.$id
-                data.featuredImage = fileId
-                const dbPost = await databaseService.createPost({ ...data, userId: userData.$id })
-
+                const fileId = file.$id;
+                data.featuredImage = fileId;
+                console.log("this is data",data)
+                const dbPost = await databaseService.createPost({...data , userId: userData.$id })
+                console.log("this is post",dbPost)
                 if (dbPost) {
                     navigate(`/post/${dbPost.$id}`)
                 }
@@ -52,7 +53,9 @@ function PostForm(post) {
     const slugTransform = useCallback((value) => {
         if (value && typeof (value === 'string')) return value.trim()
             .toLowerCase()
-            .replace(/^[a-zA-Z\d]+/g, '-')
+            .replace(/[^a-zA-Z\d\s]+/g, "-")
+            .replace(/\s/g, "-");
+
 
         return ''
 
@@ -74,7 +77,6 @@ function PostForm(post) {
 
     return (
         <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-
             <div className="w-2/3 px-2">
                 <Inputbox
                     label="Title :"
@@ -91,21 +93,16 @@ function PostForm(post) {
                         setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
                     }}
                 />
-
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
-
             </div>
-
             <div className="w-1/3 px-2">
-
                 <Inputbox
                     label="Featured Image :"
                     type="file"
                     className="mb-4"
                     accept="image/png, image/jpg, image/jpeg, image/gif"
-                    {...register("image", { required: !post })}
+                    {...register("featuredImage", { required: !post })}
                 />
-
                 {post && (
                     <div className="w-full mb-4">
                         <img
@@ -121,14 +118,11 @@ function PostForm(post) {
                     className="mb-4"
                     {...register("status", { required: true })}
                 />
-
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} >
+                <Button type="submit" bgColor={post ? "bg-blue-500" : "bg-green-600"} >
                     {post ? "Update" : "Submit"}
                 </Button>
-
             </div>
         </form>
-    )
+    );
 }
-
 export default PostForm

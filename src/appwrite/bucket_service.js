@@ -5,7 +5,7 @@ export class BucketService {
 
     client = new Client();
     bucket;
-    
+
     constructor() {
         this.client
             .setEndpoint(config.appwriteUrl)
@@ -17,8 +17,8 @@ export class BucketService {
 
     async uploadFile(file) {
         try {
-           return await this.bucket.createFile(config.appwriteBucketId, ID.unique(), file);
-            
+            return await this.bucket.createFile(config.appwriteBucketId, ID.unique(), file);
+
         } catch (error) {
             console.log("Appwrite::uploadFile::error::", error)
             return false;
@@ -35,13 +35,10 @@ export class BucketService {
         }
     }
 
-    async getFilePreview(fileId) {
-        try {
-            await  Storage.getFilePreview(config.appwriteBucketId, fileId);
-        } catch (error) {
-            console.log("Appwrite::deleteFile::error::", error)
-            return false;
-        }
+    getFilePreview(fileId) {
+
+        return this.bucket.getFilePreview(config.appwriteBucketId, fileId);
+
     }
 }
 
