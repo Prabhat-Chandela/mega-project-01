@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import databaseService from "../appwrite/database_service";
 import bucketService from "../appwrite/bucket_service";
-import {Container } from "../components/index";
+import { Container } from "../components/index";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 
@@ -34,23 +34,23 @@ export default function Post() {
     };
 
     return post ? (
-        <div className="py-8">
+        <div className="py-8 ">
             <Container>
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+                <div className="w-[70%]  flex justify-center mb-4 relative border rounded-xl py-3 bg-gray-950">
                     <img
                         src={bucketService.getFilePreview(post.featuredimage)}
                         alt={post.title}
-                        className="rounded-xl"
+                        className="rounded-xl w-[60%] "
                     />
 
                     {isAuthor && (
                         <div className="absolute right-6 top-6">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <button  className="mr-3 bg-green-500">
+                                <button className="mr-3 bg-green-600 text-white rounded-md font-semibold w-fit px-2 py-1">
                                     Edit
                                 </button>
                             </Link>
-                            <button className="bg-red-500" onClick={deletePost}>
+                            <button className="bg-red-600 text-white rounded-md font-semibold w-fit px-2 py-1" onClick={deletePost}>
                                 Delete
                             </button>
                         </div>

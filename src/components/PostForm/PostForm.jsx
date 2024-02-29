@@ -19,6 +19,7 @@ function PostForm({post}) {
 
     const navigate = useNavigate()
     const userData = useSelector(state => state.auth.userData)
+    
 
     const submit = async (data) => {
         if (post) {
@@ -39,7 +40,7 @@ function PostForm({post}) {
             if (file) {
                 const fileId = file.$id;
                 data.featuredimage = fileId;
-                console.log(data , file)
+            
                 const dbPost = await databaseService.createPost({...data , userId: userData.$id })
                 
                 if (dbPost) {
@@ -76,8 +77,8 @@ function PostForm({post}) {
     }, [watch, slugTransform, setValue])
 
     return (
-        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-            <div className="w-2/3 px-2">
+        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap bg-gray-950 text-white rounded-md p-2">
+            <div className="w-2/3 p-3 ">
                 <Inputbox
                     label="Title :"
                     placeholder="Title"
@@ -95,7 +96,8 @@ function PostForm({post}) {
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
             </div>
-            <div className="w-1/3 px-2">
+
+            <div className="w-1/3 p-3 flex flex-col gap-5">
                 <Inputbox
                     label="Featured Image :"
                     type="file"
@@ -118,7 +120,7 @@ function PostForm({post}) {
                     className="mb-4"
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={post ? "bg-blue-500" : "bg-green-600"} >
+                <Button type="submit" bgColor={post ? "bg-blue-500 hover:bg-blue-700" : "bg-green-600 hover:bg-green-700"} >
                     {post ? "Update" : "Submit"}
                 </Button>
             </div>
