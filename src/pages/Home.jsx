@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect} from 'react'
 import dabaseService from "../appwrite/database_service"
 import { Container, Postcard } from "../components/index"
 import { getAllPosts } from "../store/postSlice"
@@ -6,31 +6,27 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 function Home() {
-
     const navigate = useNavigate()
-    const allPosts = useSelector((state) => state.post.allPosts);
     const userStatus = useSelector((state) => state.auth.status);
     const dispatch = useDispatch();
 
     useEffect(() => {
 
         if (userStatus === false) {
-
             navigate('/signup')
-
         } else {
-
-            dabaseService.getPosts()
+            dabaseService.getPosts([])
                 .then((posts) => {
                     if (posts) {
-                        dispatch(getAllPosts(posts.documents))
+                        dispatch(getAllPosts({ allPosts: posts.documents }))
+                        // setAllPosts(posts.documents)
                     }
                 })
         }
 
     }, [userStatus])
 
-
+    const allPosts = useSelector((state) => state.post.allPosts);
 
     if (allPosts.length === 0) {
         return (
@@ -63,4 +59,4 @@ function Home() {
 
 }
 
-export default Home
+export default Home;
