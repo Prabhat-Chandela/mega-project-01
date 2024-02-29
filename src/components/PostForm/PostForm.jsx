@@ -22,24 +22,24 @@ function PostForm({post}) {
 
     const submit = async (data) => {
         if (post) {
-            const file = data.featuredImage[0] ? await bucketService.uploadFile(data.featuredImage[0]) : null
+            const file = data.featuredimage[0] ? await bucketService.uploadFile(data.featuredimage[0]) : null
 
             if (file) {
-                bucketService.deleteFile(post.featuredImage)
+                bucketService.deleteFile(post.featuredimage)
             }
-            const dbPost = await databaseService.updatePost(post.$id, { ...data, featuredImage: file ? file.$id : undefined })
+            const dbPost = await databaseService.updatePost(post.$id, { ...data, featuredimage: file ? file.$id : undefined })
 
             if (dbPost) {
                 navigate(`/post/${dbPost.$id}`)
             }
 
         } else {
-            const file = await bucketService.uploadFile(data.featuredImage[0]);
-            console.log("this is file" , file)
+            const file = await bucketService.uploadFile(data.featuredimage[0]);
+           
             if (file) {
                 const fileId = file.$id;
-                data.featuredImage = fileId;
-                console.log("this is data",data)
+                data.featuredimage = fileId;
+                console.log(data , file)
                 const dbPost = await databaseService.createPost({...data , userId: userData.$id })
                 console.log("this is post",dbPost)
                 if (dbPost) {
@@ -101,12 +101,12 @@ function PostForm({post}) {
                     type="file"
                     className="mb-4"
                     accept="image/png, image/jpg, image/jpeg, image/gif"
-                    {...register("featuredImage", { required: !post })}
+                    {...register("featuredimage", { required: !post })}
                 />
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={bucketService.getFilePreview(post.featuredImage)}
+                            src={bucketService.getFilePreview(post.featuredimage)}
                             alt={post.title}
                             className="rounded-lg"
                         />
