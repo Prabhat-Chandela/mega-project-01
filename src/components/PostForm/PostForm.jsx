@@ -82,7 +82,7 @@ function PostForm({post}) {
     }, [watch, slugTransform, setValue])
 
     return (
-        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap bg-gray-950 text-white rounded-md p-2">
+        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap  text-black  p-2">
             <div className="w-2/3 p-3 ">
                 <Inputbox
                     label="Title :"
@@ -125,7 +125,7 @@ function PostForm({post}) {
                     className="mb-4"
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={post ? "bg-blue-500 hover:bg-blue-700" : "bg-green-600 hover:bg-green-700"} >
+                <Button type="submit" bgColor={post ? "bg-black hover:bg-orange-400" : "bg-orange-400 hover:bg-black"} textColor={post ? "text-orange-300 hover:text-black":"text-black hover:text-orange-300"} className={"font-semibold"} >
                     {post ? "Update" : "Submit"}
                 </Button>
             </div>
