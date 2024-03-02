@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     allPosts: [],
-    userPosts: []
+    userPosts: [],
+    recentPosts: []
 }
 
 const postSlice = createSlice({
@@ -15,10 +16,13 @@ const postSlice = createSlice({
         },
         getUserPosts: (state, action) => {
             state.userPosts = [...action.payload.userPosts];
+        },
+        getRecentPosts: (state, action)=> {
+            state.recentPosts = [...action.payload.recentPosts]
         }
     }
 })
 
-export const { getAllPosts, getUserPosts } = postSlice.actions;
+export const { getAllPosts, getUserPosts, getRecentPosts } = postSlice.actions;
 
 export default postSlice.reducer;

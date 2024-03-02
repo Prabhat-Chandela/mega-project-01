@@ -26,9 +26,14 @@ function PostForm({post}) {
             const file = data.featuredimage[0] ? await bucketService.uploadFile(data.featuredimage[0]) : null
 
             if (file) {
-                bucketService.deleteFile(post.featuredimage)
+                console.log(file)
+                console.log(post)
+                console.log(post.featuredimage)
+                await bucketService.deleteFile(post.featuredimage)
+             
             }
             const dbPost = await databaseService.updatePost(post.$id, { ...data, featuredimage: file ? file.$id : undefined })
+            console.log(dbPost)
 
             if (dbPost) {
                 navigate(`/post/${dbPost.$id}`)

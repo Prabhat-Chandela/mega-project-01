@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Logo({
-  fill = "#fff",
+  fill = "black",
   padding= "p-8",
   className = "",
   width = "w-auto"

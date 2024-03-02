@@ -35,9 +35,9 @@ function Header() {
   ]
 
   return (
-    <header className='bg-slate-950 w-full  px-5 py-3'>
+    <header className='bg-amber-100 text-black w-full  px-5 py-3'>
       <Container>
-        <nav className='flex justify-between w-full text-white items-center'>
+        <nav className='flex justify-between w-full items-center'>
 
           <div>
 
@@ -47,14 +47,14 @@ function Header() {
            
           </div>
 
-          <ul className='flex gap-7 px-3 font-bold text-md items-center justify-center '>
+          <ul className='flex gap-7 px-3 text-sm font-bold items-center justify-center '>
             {navItems.map((item) => item.active ? (
 
               <li key={item.name}>
                 
                 <NavLink
                 to={item.slug}
-                className={({isActive})=>`${isActive ? 'text-green-600 underline underline-offset-8': 'text-white no-underline hover:text-green-700'}`}
+                className={({isActive})=>`${isActive ? 'text-black underline underline-offset-4 ': 'text-orange-400 hover:text-black'}`}
                   
                 >{item.name}</NavLink>
               </li>

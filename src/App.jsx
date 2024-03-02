@@ -27,7 +27,7 @@ function App() {
   return !loading ?
     (
       <>
-        <div className="max-w-screen min-h-screen bg-white text-gray-950 flex flex-col">
+        <div className="max-w-screen min-h-screen bg-amber-100 text-black flex flex-col">
           <Header />
           <main className="flex-1">
             <Outlet />

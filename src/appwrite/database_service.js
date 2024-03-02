@@ -31,13 +31,13 @@ export class DatabaseService {
         }
     }
 
-    async updatePost(slug, { title, content, featuredImage, status }) {
+    async updatePost(slug, { title, content, featuredimage, status }) {
         try {
             return await this.databases.updateDocument(config.appwriteDatabaseId, config.appwriteCollectionId, slug,
                 {
                     title,
                     content,
-                    featuredImage,
+                    featuredimage,
                     status
                 }
             )
@@ -67,9 +67,9 @@ export class DatabaseService {
         }
     }
 
-    async getPosts(queries = [Query.equal("status", "active")]) {
+    async getPosts( queries=[Query.equal("status", "active")] ) {
         try {
-           return await this.databases.listDocuments(config.appwriteDatabaseId, config.appwriteCollectionId , queries);
+           return await this.databases.listDocuments(config.appwriteDatabaseId, config.appwriteCollectionId ,queries);
 
         } catch (error) {
             console.log("Appwrite::getPosts::error::", error)

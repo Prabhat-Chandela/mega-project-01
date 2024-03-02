@@ -15,7 +15,7 @@ function LogoutBtn() {
     }
 
   return (
-    <Button onClick={logoutHandler}>Logout</Button>
+    <Button bgColor={"bg-black"} textColor={"text-orange-300"} onClick={logoutHandler}>Logout</Button>
   )
 }
 
