@@ -13,7 +13,7 @@ import AllPosts from './pages/AllPosts.jsx'
 import AddPost from './pages/AddPost.jsx'
 import EditPost from './pages/EditPost.jsx'
 import Post from './pages/Post.jsx'
-import UserPosts from './pages/UserPosts.jsx'
+import YourPosts from './pages/YourPosts.jsx'
 
 const router = createBrowserRouter([
   {
@@ -50,11 +50,11 @@ const router = createBrowserRouter([
             ),
         },
         {
-            path: "/user-posts",
+            path: "/Your-posts",
             element: (
                 <Protectedlayout authentication>
                     {" "}
-                    <UserPosts />
+                    <YourPosts />
                 </Protectedlayout>
             ),
         },

@@ -5,7 +5,7 @@ function Logo({
   fill = "black",
   padding= "p-8",
   className = "",
-  width = "w-auto"
+  width = "w-5 sm:w-auto"
 }) {
   return (
     <div className={`${width} ${padding} ${className}`}>
@@ -23,7 +23,7 @@ function Logo({
                     fill={fill}
                   />
                 </svg>
-                <span className="ml-4 text-lg font-bold">PrabhatBlogs</span>
+                <span className="ml-2 sm:ml-4 text-md sm:text-lg font-bold">PrabhatBlogs</span>
               </div>
             </Link>
           </div>
