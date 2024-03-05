@@ -106,7 +106,7 @@ function PostForm({post}) {
                 <Inputbox
                     label="Featured Image :"
                     type="file"
-                    className="mb-4"
+                    className="mb-4 py-20  "
                     accept="image/png, image/jpg, image/jpeg, image/gif"
                     {...register("featuredimage", { required: !post })}
                 />

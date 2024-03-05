@@ -54,12 +54,12 @@ function YourPosts() {
                 <section className='w-full  bg-orange-400 mb-6 sm:mb-3 sm:rounded-lg flex flex-col sm:grid sm:grid-cols-12 gap-5 sm:gap-2 px-9 py-7 sm:py-5'>
 
                     <div className='sm:col-span-5 w-full sm:w-[15vw] rounded-lg overflow-hidden'>
-                        <img className='w-full' src="hero.svg" alt="userImage" />
+                        <img className='w-full' src="user.svg" alt="userImage" />
                     </div>
 
                     <div className='sm:col-span-7 sm:py-7'>
                         <h2 className='text-black w-full text-center sm:text-start text-xl sm:text-[3.5vw] font-bold sm:mb-7'>Welcome ! {userData.name}</h2>
-                        <p className='hidden sm:block font-semibold text-amber-100 text-xl w-[70%] leading-10'>User <span className='text-orange-300 bg-black px-2 py-1 text-sm rounded-md'>{userData.email}</span> , a proud member of the PrabhatBlogs community.
+                        <p className='hidden sm:block font-semibold text-amber-100 text-[1.7vw] min-[1100px]:text-[2vw] w-[90%] leading-8 min-[1100px]:leading-10'>User <span className='text-orange-300 bg-black px-2 py-1 text-[1.1vw] min-[1100px]:text-[1.3vw] rounded-md'>{userData.email}</span> , a proud member of the PrabhatBlogs community.
                         </p>
                         <p></p>
                     </div>
