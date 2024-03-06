@@ -43,14 +43,14 @@ function Header() {
   return (
     <>
 
-      <header className='bg-amber-100 text-black w-full  px-5 py-3'>
+      <header className='bg-amber-100 text-black w-full mx-auto py-7'>
         <Container>
           <nav className='flex justify-between w-full items-center'>
 
             <div>
 
               <div>
-                <Logo padding={"p-1"} width={"w-3"} />
+                <Logo  width={"w-3"} className={'px-20 sm:px-24'} />
               </div>
 
             </div>

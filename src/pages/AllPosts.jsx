@@ -38,7 +38,7 @@ function AllPosts() {
 
                 </section>
 
-                <div className='flex flex-col sm:flex-row px-9 sm:px-0 flex-wrap'>
+                <div className='flex flex-col mb-5 sm:mb-0 sm:flex-row px-9 sm:px-0 flex-wrap'>
                     {allPosts ? (
                         allPosts.map((post) => (
                             <div key={post.$id} className='p-2 w-full sm:w-1/4'>

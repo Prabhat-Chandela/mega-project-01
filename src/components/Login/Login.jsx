@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { login as storeLogin } from '../../store/authSlice'
-import { Inputbox , Logo , Button } from '../index'
+import { Inputbox, Logo, Button } from '../index'
 import { useDispatch } from 'react-redux'
 import authService from '../../appwrite/auth_service'
 import { useForm } from 'react-hook-form'
@@ -20,7 +20,7 @@ function Login() {
       if (session) {
         const userData = await authService.getCurrentUser()
         if (userData) {
-          dispatch(storeLogin({userData}));
+          dispatch(storeLogin({ userData }));
           navigate("/")
         }
       }
@@ -31,18 +31,19 @@ function Login() {
   }
 
   return (
-    <div className={`mx-auto w-full max-w-lg bg-gray-950 text-white rounded-xl p-10 border border-black/10`}>
-      <div className="w-full flex justify-center items-center">
+    <div className={`mx-auto w-full max-w-lg bg-black flex flex-col  gap-2 mb-7 sm:mb-0 sm:rounded-xl p-5 sm:p-10 border border-black/10`}>
 
-          <Logo padding={"p-3"}/>
-      
+      <div className=" w-full flex justify-center text-orange-400 items-center ">
+
+        <Logo padding={"p-3 "} fill={'#fb923c'} />
+
       </div>
 
       <div className='flex flex-col gap-2 w-full justify-center'>
 
-        <h2 className="text-center text-2xl font-bold leading-tight">Log-In to your account</h2>
+        <h2 className="text-center text-xl sm:text-2xl text-orange-400 font-bold leading-tight">Log-In to your account</h2>
 
-        <p className="mt-2 text-center text-base text-slate-300/60">
+        <p className="mt-2 text-center text-base text-amber-100/60">
           Don&apos;t have any account?&nbsp;
           <Link
             to="/signup"
@@ -62,6 +63,9 @@ function Login() {
           <div className='space-y-5'>
             <Inputbox
               label="Email"
+              labelbg={"bg-black"}
+              labelTextCol={"text-orange-400"}
+              className={'border-orange-400 py-4 text-orange-400'}
               placeholder="Enter your email"
               type="email"
               {...register("email", {
@@ -75,6 +79,9 @@ function Login() {
 
             <Inputbox
               label="Password"
+              labelbg={"bg-black"}
+              labelTextCol={"text-orange-400"}
+              className={'border-orange-400 py-4 text-orange-400'}
               placeholder="Enter your password"
               type="password"
               {...register("password", {

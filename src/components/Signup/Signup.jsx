@@ -31,17 +31,17 @@ function Signup() {
     return (
         <div className="flex items-center justify-center">
 
-            <div className={` w-[45%]  bg-gray-950 text-white rounded-xl p-10 border border-black/10 flex flex-col  gap-2  `} >
+            <div className={` w-full sm:w-[45%]  bg-black  sm:rounded-xl p-5 mb-7 sm:mb-0  sm:p-10 border border-black/10 flex flex-col  gap-2  `} >
 
-                <div className=" w-full flex justify-center items-center ">
-                    <Logo padding={"p-3"}/>
+                <div className=" w-full flex justify-center text-orange-400 items-center ">
+                    <Logo padding={"p-3 "}  fill={'#fb923c'}/>
                 </div>
 
-                <div className='flex flex-col gap-2 w-full justify-center'>
+                <div className='flex flex-col gap-2 w-full justify-center mb-7'>
 
-                    <h2 className="text-center text-2xl font-bold leading-tight w-full">Sign up to create account</h2>
+                    <h2 className="text-center text-xl sm:text-2xl text-orange-400 font-bold leading-tight w-full">Sign up to create account</h2>
 
-                    <p className="mt-2 text-center text-base text-slate-300/60">
+                    <p className="mt-2 text-center text-base text-amber-100/60">
                         Already have an account?&nbsp;
                         <Link
                             to="/login"
@@ -63,6 +63,9 @@ function Signup() {
 
                             <Inputbox
                                 label="Full name"
+                                labelbg={"bg-black"}
+                                labelTextCol={"text-orange-400"}
+                                className={'border-orange-400 py-4 text-orange-400'}
                                 placeholder="Enter your name"
                                 {...register("name", {
                                     required: true
@@ -71,7 +74,10 @@ function Signup() {
 
                             <Inputbox
                                 label="Email"
+                                labelbg={"bg-black"}
+                                labelTextCol={"text-orange-400"}
                                 placeholder="Enter your email"
+                                className={'border-orange-400 py-4 text-orange-400'}
                                 type="email"
                                 {...register("email", {
                                     required: true,
@@ -85,14 +91,17 @@ function Signup() {
 
                             <Inputbox
                                 label="Password"
+                                labelbg={"bg-black"}
+                                labelTextCol={"text-orange-400"}
                                 placeholder="Enter your password"
+                                className={'border-orange-400 py-4 text-orange-400'}
                                 type="password"
                                 {...register("password", {
                                     required: true
                                 })}
                             />
 
-                            <Button type='submit' >SignUp</Button>
+                            <Button type='submit' className={'font-bold'} >SignUp</Button>
 
                         </div>
 

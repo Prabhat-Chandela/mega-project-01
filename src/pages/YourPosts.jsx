@@ -67,7 +67,7 @@ function YourPosts() {
 
                 </section>
 
-                <section className='flex flex-col sm:flex-row px-9 sm:px-0 flex-wrap'>
+                <section className='flex flex-col mb-5 sm:mb-0 sm:flex-row px-9 sm:px-0 flex-wrap'>
                     {userPosts.map((post) => (
                         <div key={post.$id} className='p-2 w-full sm:w-1/4'>
                             <Postcard {...post} />

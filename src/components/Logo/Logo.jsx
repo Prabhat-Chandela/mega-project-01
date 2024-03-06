@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom'
 
 function Logo({
   fill = "black",
-  padding= "p-8",
   className = "",
   width = "w-5 sm:w-auto"
 }) {
   return (
-    <div className={`${width} ${padding} ${className}`}>
+    <div className={`${width} ${className} flex px-10 items-center justify-center`}>
             <Link to="/">
               <div className="inline-flex items-center">
                 <svg
