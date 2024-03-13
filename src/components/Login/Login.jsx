@@ -89,7 +89,7 @@ function Login() {
               })}
             />
 
-            <Button type='submit'>LogIn</Button>
+            <Button type='submit' className={'font-bold'}>LogIn</Button>
 
           </div>
         </form>

@@ -11,32 +11,38 @@ function Header() {
     {
       name: 'Home',
       slug: "/",
-      active: true
+      active: true,
+      icon: <span><VscHome /></span>
     },
     {
       name: "Login",
       slug: "/login",
       active: !authStatus,
+      icon: <span><VscPerson /></span>
     },
     {
       name: "Signup",
       slug: "/signup",
       active: !authStatus,
+      icon: <span><VscPersonAdd /></span>
     },
     {
       name: "All Posts",
       slug: "/all-posts",
       active: authStatus,
+      icon: <span><VscFiles /></span>
     },
     {
       name: "Your Posts",
       slug: "/your-posts",
       active: authStatus,
+      icon: <span><VscNote /></span>
     },
     {
       name: "Add Post",
       slug: "/add-post",
       active: authStatus,
+      icon: <span><VscNewFile /></span>
     },
   ]
 
@@ -62,9 +68,9 @@ function Header() {
 
                   <NavLink
                     to={item.slug}
-                    className={({ isActive }) => `${isActive ? 'text-black underline underline-offset-4 ' : 'text-orange-400 hover:text-black'}`}
+                    className={({ isActive }) => `flex justify-center items-center gap-1 ${isActive ? 'text-black ' : 'text-orange-400 hover:text-black'}`}
 
-                  >{item.name}</NavLink>
+                  >{item.icon}{item.name}</NavLink>
                 </li>
 
               ) : null)}
@@ -87,18 +93,11 @@ function Header() {
                     to={item.slug}
                     className={({ isActive }) => `text-xl ${isActive ? ' text-white ' : 'text-orange-400'}`}
 
-                  >{item.name === "Home"?<VscHome /> :
-                    item.name === "Login"? <VscPerson />:
-                    item.name === "Signup"?<VscPersonAdd /> :
-                    item.name === "All Posts"? <VscFiles />:
-                    item.name === "Your Posts"? <VscNote />:
-                    item.name === "Add Post"? <VscNewFile />: null}</NavLink>
+                  >{item.icon}</NavLink>
                 </li>
 
               ) : null)}
  
-
-
             </ul>
 
       </nav>
