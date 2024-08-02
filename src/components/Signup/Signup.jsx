@@ -19,7 +19,7 @@ function Signup() {
             if (userData) {
                 const userData = await authService.getCurrentUser();
                 if (userData) {
-                    dispatch(storeLogin({userData}));
+                    dispatch(storeLogin({ userData }));
                     navigate("/")
                 }
             }
@@ -29,12 +29,16 @@ function Signup() {
     }
 
     return (
-        <div className="flex items-center justify-center">
+        <div className="grid sm:grid-cols-12 border border-black/10 rounded-xl shadow-md">
 
-            <div className={` w-full sm:w-[45%]  bg-black  sm:rounded-xl p-5 mb-7 sm:mb-0  sm:p-10 border border-black/10 flex flex-col  gap-2  `} >
+            <div className='w-full sm:col-span-6 sm:rounded-tl-xl sm:rounded-bl-xl overflow-hidden'>
+                <img className='w-full h-full object-cover' src="\signupImage.jpg" alt="signupSectionImage" />
+            </div>
+
+            <div className={`w-full sm:col-span-6 bg-[#fff] flex flex-col  gap-2 sm:rounded-tr-xl sm:rounded-br-xl p-5 sm:p-10  `} >
 
                 <div className=" w-full flex justify-center text-orange-400 items-center ">
-                    <Logo padding={"p-3 "}  fill={'#fb923c'}/>
+                    <Logo padding={"p-3 "} fill={'#fb923c'} />
                 </div>
 
                 <div className='flex flex-col gap-2 w-full justify-center mb-7'>

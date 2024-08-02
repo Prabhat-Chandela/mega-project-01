@@ -9,9 +9,9 @@ export default function Protectedlayout({children , authentication = true}) {
 
     useEffect(()=>{
         if(authentication && authStatus!=authentication){
-            navigate("/login")
-        } else if (!authentication && authStatus!=authentication){
             navigate("/")
+        } else if (!authentication && authStatus!=authentication){
+            navigate("/profile")
         }
 
         setLoading(false)

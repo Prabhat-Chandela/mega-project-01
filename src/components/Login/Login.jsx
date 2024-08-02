@@ -31,7 +31,15 @@ function Login() {
   }
 
   return (
-    <div className={`mx-auto w-full max-w-lg bg-black flex flex-col  gap-2 mb-7 sm:mb-0 sm:rounded-xl p-5 sm:p-10 border border-black/10`}>
+
+<div className='grid sm:grid-cols-12 border border-black/10 rounded-xl shadow-md'>
+
+
+<div className='w-full sm:col-span-6 sm:rounded-tl-xl sm:rounded-bl-xl overflow-hidden'>
+<img className='w-full h-full object-cover' src="\loginImage.jpg" alt="loginSectionImage" />
+</div>
+
+    <div className={`w-full sm:col-span-6 bg-[#fff] flex flex-col  gap-2 sm:rounded-tr-xl sm:rounded-br-xl p-5 sm:p-10  `}>
 
       <div className=" w-full flex justify-center text-orange-400 items-center ">
 
@@ -41,9 +49,9 @@ function Login() {
 
       <div className='flex flex-col gap-2 w-full justify-center'>
 
-        <h2 className="text-center text-xl sm:text-2xl text-orange-400 font-bold leading-tight">Log-In to your account</h2>
+        <h2 className="text-center text-xl sm:text-2xl text-black">Log-In to your account</h2>
 
-        <p className="mt-2 text-center text-base text-amber-100/60">
+        <p className="mt-2 text-center text-base text-black/80">
           Don&apos;t have any account?&nbsp;
           <Link
             to="/signup"
@@ -94,6 +102,8 @@ function Login() {
           </div>
         </form>
       </div>
+
+    </div>
 
     </div>
   )

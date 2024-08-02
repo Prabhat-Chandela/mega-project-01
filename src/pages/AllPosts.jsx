@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Container, Postcard } from "../components/index"
 import databaseService from "../appwrite/database_service"
 import { getAllPosts } from "../store/postSlice"
@@ -20,8 +20,7 @@ function AllPosts() {
 
     return (
         <div className='w-full py-8'>
-            <Container>
-
+     
                 <section className='w-full  bg-orange-400 mb-6 sm:mb-3 sm:rounded-lg flex flex-col sm:grid sm:grid-cols-12 gap-5 sm:gap-2 px-9 py-7 sm:py-5'>
 
                     <div className='sm:col-span-5 w-full sm:w-[16vw]  rounded-lg overflow-hidden'>
@@ -51,7 +50,7 @@ function AllPosts() {
                     )}
 
                 </div>
-            </Container>
+                
         </div>
     )
 }
