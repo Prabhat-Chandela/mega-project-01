@@ -20,7 +20,7 @@ function Signup() {
                 const userData = await authService.getCurrentUser();
                 if (userData) {
                     dispatch(storeLogin({ userData }));
-                    navigate("/")
+                    navigate("/profile")
                 }
             }
         } catch (error) {
@@ -29,29 +29,29 @@ function Signup() {
     }
 
     return (
-        <div className="grid sm:grid-cols-12 border border-black/10 rounded-xl shadow-md">
+        <div className="grid lg:grid-cols-12 rounded-xl overflow-hidden shadow-md">
 
-            <div className='w-full sm:col-span-6 sm:rounded-tl-xl sm:rounded-bl-xl overflow-hidden'>
+            <div className='w-full lg:col-span-6 overflow-hidden'>
                 <img className='w-full h-full object-cover' src="\signupImage.jpg" alt="signupSectionImage" />
             </div>
 
-            <div className={`w-full sm:col-span-6 bg-[#fff] flex flex-col  gap-2 sm:rounded-tr-xl sm:rounded-br-xl p-5 sm:p-10  `} >
+            <div className={`w-full lg:col-span-6 bg-[#fff] flex flex-col gap-2 p-5 sm:p-10 `} >
 
-                <div className=" w-full flex justify-center text-orange-400 items-center ">
+                <div className=" w-full flex justify-center text-black items-center ">
                     <Logo padding={"p-3 "} fill={'#fb923c'} />
                 </div>
 
                 <div className='flex flex-col gap-2 w-full justify-center mb-7'>
 
-                    <h2 className="text-center text-xl sm:text-2xl text-orange-400 font-bold leading-tight w-full">Sign up to create account</h2>
+                    <h2 className="text-center text-xl sm:text-2xl text-black font-bold leading-tight w-full">Sign up to create account</h2>
 
-                    <p className="mt-2 text-center text-base text-amber-100/60">
+                    <p className="mt-2 text-center text-base text-black/80">
                         Already have an account?&nbsp;
                         <Link
                             to="/login"
                             className="font-medium text-primary transition-all duration-200 hover:underline"
                         >
-                            Sign-In
+                            Log-In
                         </Link>
                     </p>
 
@@ -67,9 +67,7 @@ function Signup() {
 
                             <Inputbox
                                 label="Full name"
-                                labelbg={"bg-black"}
-                                labelTextCol={"text-orange-400"}
-                                className={'border-orange-400 py-4 text-orange-400'}
+                                className={'py-4 '}
                                 placeholder="Enter your name"
                                 {...register("name", {
                                     required: true
@@ -78,10 +76,8 @@ function Signup() {
 
                             <Inputbox
                                 label="Email"
-                                labelbg={"bg-black"}
-                                labelTextCol={"text-orange-400"}
                                 placeholder="Enter your email"
-                                className={'border-orange-400 py-4 text-orange-400'}
+                                className={'py-4 '}
                                 type="email"
                                 {...register("email", {
                                     required: true,
@@ -95,10 +91,8 @@ function Signup() {
 
                             <Inputbox
                                 label="Password"
-                                labelbg={"bg-black"}
-                                labelTextCol={"text-orange-400"}
                                 placeholder="Enter your password"
-                                className={'border-orange-400 py-4 text-orange-400'}
+                                className={'py-4 '}
                                 type="password"
                                 {...register("password", {
                                     required: true

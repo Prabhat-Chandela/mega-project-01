@@ -27,12 +27,11 @@ function App() {
   return !loading ?
     (
       <>
-        <div className="max-w-screen min-h-screen bg-white text-black flex flex-col ">
+        <div className="max-w-screen min-h-screen bg-black text-white flex flex-col ">
           <Header />
           <main className="flex-1 mt-[65px]">
             <Outlet />
           </main>
-          <Footer />
         </div>
       </>
     )

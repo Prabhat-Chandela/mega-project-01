@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate} from 'react-router-dom';
 import { useSelector, useDispatch  } from 'react-redux';
 import authService from '../../appwrite/auth_service';
 import { logout } from '../../store/authSlice';
@@ -9,7 +9,9 @@ import { HiOutlineViewGrid, HiOutlineArrowsExpand, HiOutlineChevronDoubleRight }
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const logoutHandler = () => {
     authService.logout()
@@ -23,7 +25,7 @@ function Header() {
     {
       name: 'Home',
       slug: "/",
-      authenticated: true,
+      authenticated:!authStatus,
     },
     {
       name: "Login",
@@ -89,12 +91,18 @@ function Header() {
               ): null)
             }
 
-            <Button onClick={logoutHandler} className='lg:hidden'>Log Out</Button>
+            {
+              authStatus ?( <Button onClick={logoutHandler} className='lg:hidden'>Log Out</Button>) :  (<Button onClick={()=>navigate('/login')} className='lg:hidden'>Get Started</Button>)
+            }
+            
 
           </ul>
         </div>
-
-        <Button onClick={logoutHandler} className='hidden lg:flex'>Log Out</Button>
+        {
+              authStatus ?( <Button onClick={logoutHandler} className='hidden lg:flex'>Log Out</Button>) :  (<Button onClick={()=>(navigate('/login'))} className='hidden lg:flex'>Get Started</Button>)
+            }
+            
+        
 
       </nav>
     </div>

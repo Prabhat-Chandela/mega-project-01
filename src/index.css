@@ -12,8 +12,8 @@
     line-height: 1.5;
   
     color-scheme: light dark;
-    color: #000000;
-    background-color: #ffffff;
+    color: #ffffff;
+    background-color: #000000 ;
   
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -39,8 +39,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: #000000;
-    background-color: #ffffff;
+    color: #ffffff ;
+    background-color: #000000 ;
     overflow-x: hidden;
   }
   
@@ -65,8 +65,8 @@
   
   @media (prefers-color-scheme: light) {
     :root {
-      color: #000000;
-      background-color: #ffffff;
+      color: #ffffff;
+      background-color: #000000;
     }
   
   }

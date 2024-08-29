@@ -3,7 +3,7 @@ import {Login as LoginComponent} from "../components/index"
 
 function Login() {
   return (
-    <div className='py-8'>
+    <div className='p-3 bg-[url("HomeOne.jpg")] sm:p-10'>
         <LoginComponent/>
     </div>
   )

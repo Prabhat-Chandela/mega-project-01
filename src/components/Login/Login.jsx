@@ -21,7 +21,7 @@ function Login() {
         const userData = await authService.getCurrentUser()
         if (userData) {
           dispatch(storeLogin({ userData }));
-          navigate("/")
+          navigate("/profile")
         }
       }
     } catch (error) {
@@ -32,78 +32,74 @@ function Login() {
 
   return (
 
-<div className='grid sm:grid-cols-12 border border-black/10 rounded-xl shadow-md'>
+    <div className='grid lg:grid-cols-12 rounded-xl overflow-hidden shadow-md'>
 
 
-<div className='w-full sm:col-span-6 sm:rounded-tl-xl sm:rounded-bl-xl overflow-hidden'>
-<img className='w-full h-full object-cover' src="\loginImage.jpg" alt="loginSectionImage" />
-</div>
-
-    <div className={`w-full sm:col-span-6 bg-[#fff] flex flex-col  gap-2 sm:rounded-tr-xl sm:rounded-br-xl p-5 sm:p-10  `}>
-
-      <div className=" w-full flex justify-center text-orange-400 items-center ">
-
-        <Logo padding={"p-3 "} fill={'#fb923c'} />
-
+      <div className='w-full lg:col-span-6 overflow-hidden'>
+        <img className='w-full h-full object-cover' src="\loginImage.jpg" alt="loginSectionImage" />
       </div>
 
-      <div className='flex flex-col gap-2 w-full justify-center'>
+      <div className={`w-full lg:col-span-6 bg-[#fff] flex flex-col gap-2 p-5 sm:p-10  `}>
 
-        <h2 className="text-center text-xl sm:text-2xl text-black">Log-In to your account</h2>
+        <div className=" w-full flex justify-center text-orange-400 items-center ">
 
-        <p className="mt-2 text-center text-base text-black/80">
-          Don&apos;t have any account?&nbsp;
-          <Link
-            to="/signup"
-            className="font-medium text-primary transition-all duration-200 hover:underline"
-          >
-            Sign Up
-          </Link>
-        </p>
+          <Logo padding={"p-3 "} fill={'#fb923c'} />
 
-        {error && <p className='text-red-600 mt-8 text-center'>{error}</p>}
+        </div>
+
+        <div className='flex flex-col gap-2 w-full justify-center'>
+
+          <h2 className="text-center text-xl sm:text-2xl text-black">Log-In to your account</h2>
+
+          <p className="mt-2 text-center text-base text-black/80">
+            Don&apos;t have any account?&nbsp;
+            <Link
+              to="/signup"
+              className="font-medium text-primary transition-all duration-200 hover:underline"
+            >
+              Sign Up
+            </Link>
+          </p>
+
+          {error && <p className='text-red-600 mt-8 text-center'>{error}</p>}
+
+        </div>
+
+        <div className='flex flex-col gap-2'>
+
+          <form onSubmit={handleSubmit(login)} className='mt-8'>
+            <div className='space-y-5'>
+              <Inputbox
+                label="Email"
+                className={'py-4 '}
+                placeholder="Enter your email"
+                type="email"
+                {...register("email", {
+                  required: true,
+                  validate: {
+                    matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+                      "Email address must be a valid address",
+                  }
+                })}
+              />
+
+              <Inputbox
+                label="Password"
+                className={'py-4 '}
+                placeholder="Enter your password"
+                type="password"
+                {...register("password", {
+                  required: true,
+                })}
+              />
+
+              <Button type='submit' className={'font-bold'}>LogIn</Button>
+
+            </div>
+          </form>
+        </div>
 
       </div>
-
-      <div className='flex flex-col gap-2'>
-
-        <form onSubmit={handleSubmit(login)} className='mt-8'>
-          <div className='space-y-5'>
-            <Inputbox
-              label="Email"
-              labelbg={"bg-black"}
-              labelTextCol={"text-orange-400"}
-              className={'border-orange-400 py-4 text-orange-400'}
-              placeholder="Enter your email"
-              type="email"
-              {...register("email", {
-                required: true,
-                validate: {
-                  matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                    "Email address must be a valid address",
-                }
-              })}
-            />
-
-            <Inputbox
-              label="Password"
-              labelbg={"bg-black"}
-              labelTextCol={"text-orange-400"}
-              className={'border-orange-400 py-4 text-orange-400'}
-              placeholder="Enter your password"
-              type="password"
-              {...register("password", {
-                required: true,
-              })}
-            />
-
-            <Button type='submit' className={'font-bold'}>LogIn</Button>
-
-          </div>
-        </form>
-      </div>
-
-    </div>
 
     </div>
   )

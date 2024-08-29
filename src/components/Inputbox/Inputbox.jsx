@@ -2,7 +2,7 @@ import React, { useId } from 'react'
 
 const Inputbox = React.forwardRef(function Inputbox({
   label,
-  labelbg = "bg-amber-100",
+  labelbg = "bg-white",
   labelTextCol = "text-black",
   type = "text",
   className = "",
