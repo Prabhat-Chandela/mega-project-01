@@ -6,13 +6,25 @@ function Home() {
     return (
         <div className='w-full flex flex-col gap-7'>
 
-            <section className='flex flex-col bg-[url("\HomeOne.jpg")] pt-10 lg:pt-20 gap-7'>
+            <section className='flex flex-col pt-10 lg:pt-20 gap-7  bg-[url("\homeOne.jpg")]  lg:bg-cover'>
 
-                <div className=' w-full items-center justify-center px-5 py-5 flex flex-col gap-5 sm:gap-10 '>
-                    <h1 className='w-full text-white text-center text-3xl sm:text-6xl drop-shadow-2xl '>Tomorrow is for the Taking</h1>
+                <div className='max-w-screen-2xl items-center justify-center p-5 lg:px-14 xl:px-20'>
 
-                    <p className='w-full text-center text-sm sm:text-lg xl:text-xl'>ShareSphere: Connect, share your posts and blogs, and inspire a community that celebrates creativity and connection.</p>
-                    <p className='text-orange-500 w-full text-center text-sm sm:text-lg xl:text-xl uppercase'>Connect. Share. Inspire.</p>
+                    <div className='grid p-3 lg:p-7 '>
+
+                    
+                        <div className='grid gap-5 sm:place-items-center'>
+
+                            <h1 className='w-full text-white lg:text-center text-3xl sm:text-6xl drop-shadow-2xl '><span className='inline-flex text-orange-500'>Connect</span> and Share Anytime From Anywhere With Anyone .</h1>
+
+                            <p className='w-full lg:text-center text-sm sm:text-lg xl:text-xl drop-shadow-2xl'>ShareSphere: Connect, share your posts and blogs, and inspire a community that celebrates creativity and connection.</p>
+
+                            <p className='w-full lg:text-center text-sm sm:text-lg xl:text-xl uppercase drop-shadow-2xl'><span className='inline-flex text-orange-500'>#</span>Connect <span className='inline-flex text-orange-500'>#</span>Share <span className='inline-flex text-orange-500'>#</span>Inspire</p>
+
+                        </div>
+
+                    </div>
+
 
                 </div>
 

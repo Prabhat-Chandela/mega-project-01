@@ -16,79 +16,83 @@ import Post from './pages/Post.jsx'
 import Profile from './pages/Profile.jsx'
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-        {
-            path: "/",
-            element: <Home />,
-        },
-        {
-            path: "/login",
-            element: (
-                <Protectedlayout authentication={false}>
-                    <Login />
-                </Protectedlayout>
-            ),
-        },
-        {
-            path: "/signup",
-            element: (
-                <Protectedlayout authentication={false}>
-                    <Signup />
-                </Protectedlayout>
-            ),
-        },
-        {
-            path: "/all-posts",
-            element: (
-                <Protectedlayout authentication>
-                    {" "}
-                    <AllPosts />
-                </Protectedlayout>
-            ),
-        },
-        {
-            path: "/profile",
-            element: (
-                <Protectedlayout authentication>
-                    {" "}
-                    <Profile />
-                </Protectedlayout>
-            ),
-        },
-        {
-            path: "/add-post",
-            element: (
-                <Protectedlayout authentication>
-                    {" "}
-                    <AddPost />
-                </Protectedlayout>
-            ),
-        },
-        {
-            path: "/edit-post/:slug",
-            element: (
-                <Protectedlayout authentication>
-                    {" "}
-                    <EditPost />
-                </Protectedlayout>
-            ),
-        },
-        {
-            path: "/post/:slug",
-            element: <Post />,
-        },
-    ],
-},
+    {
+        path: "/",
+        element: <App />,
+        children: [
+            {
+                path: "/",
+                element: (
+                    <Protectedlayout authentication={false}>
+                        <Home />
+                    </Protectedlayout>
+                ),
+            },
+            {
+                path: "/login",
+                element: (
+                    <Protectedlayout authentication={false}>
+                        <Login />
+                    </Protectedlayout>
+                ),
+            },
+            {
+                path: "/signup",
+                element: (
+                    <Protectedlayout authentication={false}>
+                        <Signup />
+                    </Protectedlayout>
+                ),
+            },
+            {
+                path: "/all-posts",
+                element: (
+                    <Protectedlayout authentication>
+                        {" "}
+                        <AllPosts />
+                    </Protectedlayout>
+                ),
+            },
+            {
+                path: "/profile",
+                element: (
+                    <Protectedlayout authentication>
+                        {" "}
+                        <Profile />
+                    </Protectedlayout>
+                ),
+            },
+            {
+                path: "/add-post",
+                element: (
+                    <Protectedlayout authentication>
+                        {" "}
+                        <AddPost />
+                    </Protectedlayout>
+                ),
+            },
+            {
+                path: "/edit-post/:slug",
+                element: (
+                    <Protectedlayout authentication>
+                        {" "}
+                        <EditPost />
+                    </Protectedlayout>
+                ),
+            },
+            {
+                path: "/post/:slug",
+                element: <Post />,
+            },
+        ],
+    },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 
-  <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router}/>
-    </Provider>
-  </React.StrictMode>,
+    <React.StrictMode>
+        <Provider store={store}>
+            <RouterProvider router={router} />
+        </Provider>
+    </React.StrictMode>,
 )
