@@ -9,11 +9,12 @@ import { Protectedlayout } from './components/index.js'
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
-import AllPosts from './pages/AllPosts.jsx'
-import AddPost from './pages/AddPost.jsx'
+import AllBlogPosts from './pages/AllBlogPosts.jsx'
+import AddBlogPost from './pages/AddBlogPost.jsx'
 import EditPost from './pages/EditPost.jsx'
-import Post from './pages/Post.jsx'
+import BlogPost from './pages/BlogPost.jsx'
 import Profile from './pages/Profile.jsx'
+import AllSocialPosts from './pages/AllSocialPosts.jsx'
 
 const router = createBrowserRouter([
     {
@@ -45,11 +46,20 @@ const router = createBrowserRouter([
                 ),
             },
             {
-                path: "/all-posts",
+                path: "/all-blog-posts",
                 element: (
                     <Protectedlayout authentication>
                         {" "}
-                        <AllPosts />
+                        <AllBlogPosts />
+                    </Protectedlayout>
+                ),
+            },
+            {
+                path: "/all-social-posts",
+                element: (
+                    <Protectedlayout authentication>
+                        {" "}
+                        <AllSocialPosts />
                     </Protectedlayout>
                 ),
             },
@@ -63,11 +73,11 @@ const router = createBrowserRouter([
                 ),
             },
             {
-                path: "/add-post",
+                path: "/add-blog-post",
                 element: (
                     <Protectedlayout authentication>
                         {" "}
-                        <AddPost />
+                        <AddBlogPost />
                     </Protectedlayout>
                 ),
             },
@@ -81,8 +91,8 @@ const router = createBrowserRouter([
                 ),
             },
             {
-                path: "/post/:slug",
-                element: <Post />,
+                path: "/blog-post/:slug",
+                element: <BlogPost />,
             },
         ],
     },

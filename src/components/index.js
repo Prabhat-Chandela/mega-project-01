@@ -13,6 +13,8 @@ import Logo from "./Logo/Logo";
 import Button from "./Button/Button";
 import HeroImageCard from "./HeroImageCard/HeroImageCard";
 import HeroShowcaseOne from "./HeroShowcaseOne/HeroShowcaseOne";
+import SecondaryButton from "./SecondaryButton/SecondaryButton";
+import UserBlogPosts from "./UserBlogPosts/UserBlogPosts";
 
 export {
     Header,
@@ -30,4 +32,6 @@ export {
     Button,
     HeroImageCard,
     HeroShowcaseOne,
+    SecondaryButton,
+    UserBlogPosts
 }

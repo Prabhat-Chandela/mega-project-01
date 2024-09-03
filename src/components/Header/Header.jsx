@@ -38,20 +38,20 @@ function Header() {
       authenticated: !authStatus,
     },
     {
-      name: "Posts",
-      slug: "/all-posts",
-      authenticated: authStatus,
-    },
-    {
       name: "Profile",
       slug: "/profile",
       authenticated: authStatus,
     },
     {
-      name: "Add Post",
-      slug: "/add-post",
+      name: "Social Feed",
+      slug: "/all-social-posts",
       authenticated: authStatus,
   
+    },
+    {
+      name: "Blog Posts",
+      slug: "/all-blog-posts",
+      authenticated: authStatus,
     },
   ]
 
@@ -84,7 +84,7 @@ function Header() {
               navItems.map((item) => item.authenticated ? (
                 <li key={item.name} className='w-full lg:flex lg:items-center justify-center gap-5'>
                   <span className='hidden lg:block w-[2px] h-[2px] p-[2px] bg-black rounded-full' />
-                  <NavLink to={item.slug} onClick={()=> (closeMenu())} className={({ isActive }) => `w-full flex items-center justify-between border p-3 rounded-xl border-black font-semibold lg:border-none lg:justify-normal lg:min-w-fit lg:p-0 lg:rounded-none transition-all ease-in-out duration-200 ${isActive ? 'bg-black text-[#fff] lg:bg-transparent lg:text-orange-500' : 'bg-transparent text-black lg:text-black/70 '} `}>
+                  <NavLink to={item.slug} onClick={()=> (closeMenu())} className={({ isActive }) => `w-full flex items-center justify-between border p-3 rounded-xl border-black font-semibold lg:border-none lg:justify-normal lg:min-w-fit lg:p-0 lg:rounded-none transition-all ease-in-out duration-200 ${isActive ? 'bg-black text-[#fff] lg:bg-transparent lg:text-orange-500' : 'bg-transparent text-black lg:text-black/70 lg:hover:text-black '} `}>
                     {item.name} <span className='lg:hidden'><HiOutlineChevronDoubleRight /></span>
                   </NavLink>
                 </li>

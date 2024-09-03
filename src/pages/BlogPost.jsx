@@ -7,7 +7,7 @@ import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 import { VscEdit , VscClose } from "react-icons/vsc";
 
-export default function Post() {
+export default function BlogPost() {
     const [post, setPost] = useState(null);
     const { slug } = useParams();
     const navigate = useNavigate();
@@ -20,9 +20,9 @@ export default function Post() {
         if (slug) {
             databaseService.getPost(slug).then((post) => {
                 if (post) setPost(post);
-                else navigate("/");
+                else navigate("/profile");
             });
-        } else navigate("/");
+        } else navigate("/profile");
     }, [slug, navigate]);
 
     const deletePost = () => {
