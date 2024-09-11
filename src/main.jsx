@@ -15,6 +15,7 @@ import EditPost from './pages/EditPost.jsx'
 import BlogPost from './pages/BlogPost.jsx'
 import Profile from './pages/Profile.jsx'
 import AllSocialPosts from './pages/AllSocialPosts.jsx'
+import AddSocialPost from './pages/AddSocialPost.jsx'
 
 const router = createBrowserRouter([
     {
@@ -78,6 +79,15 @@ const router = createBrowserRouter([
                     <Protectedlayout authentication>
                         {" "}
                         <AddBlogPost />
+                    </Protectedlayout>
+                ),
+            },
+            {
+                path: "/add-social-post",
+                element: (
+                    <Protectedlayout authentication>
+                        {" "}
+                        <AddSocialPost />
                     </Protectedlayout>
                 ),
             },

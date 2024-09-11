@@ -70,16 +70,19 @@ function Profile() {
                     </section>
 
                     <section className='w-full p-3 lg:p-7 flex gap-5'>
-                        <SecondaryButton textSize='text-sm lg:text-lg xl:text-xl'><span><IoMdAddCircle /></span> Add Post</SecondaryButton>
+
+                        <SecondaryButton textSize='text-sm lg:text-lg xl:text-xl' onClick={() => navigate('/add-social-post')}><span><IoMdAddCircle /></span> Add Post</SecondaryButton>
+
                         <SecondaryButton textSize='text-sm lg:text-lg xl:text-xl' onClick={() => navigate('/add-blog-post')}><span><IoMdAddCircleOutline /></span>Add Blog</SecondaryButton>
+                        
                     </section>
 
                     <section className='flex flex-col gap-5 p-3 lg:p-7'>
 
                         <div className='w-full grid grid-cols-6 rounded-lg overflow-hidden shadow-xl bg-zinc-950 py-5'>
-                            <button onClick={()=> setShowBlogPost(false)} className='col-span-3 text-sm lg:text-lg xl:text-xl p-2 border-r border-white flex items-center justify-center gap-2'><span><IoGrid /></span>Social Posts</button>
+                            <button onClick={()=> setShowBlogPost(false)} className={`col-span-3 ${!showBlogPost?'text-orange-500' : 'text-white'} text-sm lg:text-lg xl:text-xl p-2 border-r border-white flex items-center justify-center gap-2`}><span><IoGrid /></span>Social Posts</button>
 
-                            <button onClick={()=> setShowBlogPost(true)} className='col-span-3 text-sm lg:text-lg xl:text-xl  p-2 border-l border-white flex items-center justify-center gap-2'><span><IoGridOutline /></span>Blog Posts</button>
+                            <button onClick={()=> setShowBlogPost(true)} className={`col-span-3 ${showBlogPost?'text-orange-500' : 'text-white'} text-sm lg:text-lg xl:text-xl  p-2 border-l border-white flex items-center justify-center gap-2`}><span><IoGridOutline /></span>Blog Posts</button>
                         </div>
                         {showBlogPost ? (<UserBlogPosts />) : (<div></div>)}
                     </section>

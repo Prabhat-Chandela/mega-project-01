@@ -15,6 +15,7 @@ import HeroImageCard from "./HeroImageCard/HeroImageCard";
 import HeroShowcaseOne from "./HeroShowcaseOne/HeroShowcaseOne";
 import SecondaryButton from "./SecondaryButton/SecondaryButton";
 import UserBlogPosts from "./UserBlogPosts/UserBlogPosts";
+import SocialPostForm from "./SocialPostForm/SocialPostForm";
 
 export {
     Header,
@@ -33,5 +34,6 @@ export {
     HeroImageCard,
     HeroShowcaseOne,
     SecondaryButton,
-    UserBlogPosts
+    UserBlogPosts,
+    SocialPostForm
 }
