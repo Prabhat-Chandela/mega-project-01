@@ -84,7 +84,7 @@ function Profile() {
 
                             <button onClick={()=> setShowBlogPost(true)} className={`col-span-3 ${showBlogPost?'text-orange-500' : 'text-white'} text-sm lg:text-lg xl:text-xl  p-2 border-l border-white flex items-center justify-center gap-2`}><span><IoGridOutline /></span>Blog Posts</button>
                         </div>
-                        {showBlogPost ? (<UserBlogPosts />) : (<div></div>)}
+                        {showBlogPost ? (<UserBlogPosts />) : (<div>No Social posts to show</div>)}
                     </section>
 
 

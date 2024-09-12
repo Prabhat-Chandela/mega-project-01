@@ -2,11 +2,11 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Inputbox, SecondaryButton } from '../index';
 
-function SocialPostForm() {
+function SocialPostForm({socialPost}) {
     const { register, handleSubmit } = useForm({
         defaultValues: {
-            caption:'',
-            tags:''
+            caption: socialPost?.caption || '',
+            tags: socialPost?.tags || ''
 
         }
     });
@@ -30,17 +30,17 @@ function SocialPostForm() {
                     label="Post Image :"
                     type="file"
                     accept="image/png, image/jpg, image/jpeg, image/gif"
-                    {...register("socialpostimage", { required: true })}
+                    {...register("socialpostimage", { required: !socialPost })}
                 />
-                {/* {post && (
+                {socialPost && (
                     <div className="w-full mb-4">
                         <img
-                            src={"bucketService.getFilePreview(post.featuredimage)"}
-                            alt={post.title}
+                            src={""}
+                            alt={socialPost.caption}
                             className="rounded-lg"
                         />
                     </div>
-                )} */}
+                )}
 
                 <Inputbox
                     label="Tags :"
@@ -52,7 +52,7 @@ function SocialPostForm() {
 
 
             <SecondaryButton type="submit">
-                {/* {post ? "Update" : "Submit"} */} submit
+                {socialPost ? "Update" : "Submit"}
             </SecondaryButton>
 
         </form>

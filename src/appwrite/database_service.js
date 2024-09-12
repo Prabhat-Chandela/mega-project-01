@@ -1,5 +1,5 @@
 import config from "../config/config";
-import { Client, Databases, Query } from "appwrite";
+import { Client, Databases, ID, Query } from "appwrite";
 
 export class DatabaseService {
     client = new Client();
@@ -73,6 +73,48 @@ export class DatabaseService {
 
         } catch (error) {
             console.log("Appwrite::getPosts::error::", error)
+            return false;
+        }
+    }
+
+    async createSocialPost({ caption, postimage, tags, creatorId, creatorName }) {
+        try {
+            return await this.databases.createDocument(config.appwriteDatabaseId, config.appwriteSocialCollectionId, ID.unique(),
+                {
+                    caption,
+                    postimage, 
+                    tags, 
+                    creatorId, 
+                    creatorName
+                }
+            )
+
+        } catch (error) {
+            console.log("Appwrite::createSocialPost::error::", error)
+        }
+    }
+
+    async updateSocialPost(socialPostId, { caption, postimage, tags }) {
+        try {
+            return await this.databases.updateDocument(config.appwriteDatabaseId, config.appwriteSocialCollectionId, socialPostId,
+                {
+                    caption,
+                    postimage,
+                    tags
+                }
+            )
+        } catch (error) {
+            console.log("Appwrite::updateSocialPost::error::", error)
+        }
+    }
+
+    async deleteSocialPost(socialPostId) {
+        try {
+            await this.databases.deleteDocument(config.appwriteDatabaseId, config.appwriteSocialCollectionId, socialPostId)
+            return true;
+
+        } catch (error) {
+            console.log("Appwrite::deleteSocialPost::error::", error)
             return false;
         }
     }

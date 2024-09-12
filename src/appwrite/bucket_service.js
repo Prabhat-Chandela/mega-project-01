@@ -40,6 +40,32 @@ export class BucketService {
         return this.bucket.getFilePreview(config.appwriteBucketId, fileId);
 
     }
+
+    async uploadSocialFile(socialFile) {
+        try {
+            return await this.bucket.createFile(config.appwriteSocialBucketId, ID.unique(), socialFile);
+
+        } catch (error) {
+            console.log("Appwrite::uploadSocialFile::error::", error)
+            return false;
+        }
+    }
+
+    async deleteSocialFile(socialFileId) {
+        try {
+            await this.bucket.deleteFile(config.appwriteSocialBucketId, socialFileId);
+            return true;
+        } catch (error) {
+            console.log("Appwrite::deleteFile::error::", error)
+            return false;
+        }
+    }
+
+    getSocialFilePreview(socialFileId) {
+
+        return this.bucket.getFilePreview(config.appwriteSocialBucketId, socialFileId);
+
+    }
 }
 
 
