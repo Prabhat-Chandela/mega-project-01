@@ -119,6 +119,25 @@ export class DatabaseService {
         }
     }
 
+    async getSocialPosts() {
+        try{
+            return await this.databases.listDocuments(config.appwriteDatabaseId, config.appwriteSocialCollectionId);
+
+        } catch (error) {
+            console.log("Appwrite::getSocialPosts::error::", error)
+            return false;
+        }
+    }
+
+    async getSocialPost(socialPostId) {
+        try{
+            return await this.databases.getDocument(config.appwriteDatabaseId, config.appwriteSocialCollectionId, socialPostId);
+        } catch (error) {
+            console.log("Appwrite::getSocialPost::error::", error)
+            return false;
+        }
+    }
+
   
 }
 
