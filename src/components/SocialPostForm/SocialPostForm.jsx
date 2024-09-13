@@ -1,6 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Inputbox, SecondaryButton } from '../index';
+import bucketService from '../../appwrite/bucket_service';
+import databaseService from '../../appwrite/database_service';
+import { useSelector } from 'react-redux';
 
 function SocialPostForm({socialPost}) {
     const { register, handleSubmit } = useForm({
@@ -11,8 +14,29 @@ function SocialPostForm({socialPost}) {
         }
     });
 
-    const submit = ()=>{
+    const userData = useSelector(state => state.auth.userData);
 
+    const submit = async (data)=>{
+        if(socialPost){
+            const socialFile = data.socialpostimage[0] ? await bucketService.uploadSocialFile(data.socialpostimage[0]) : null
+            
+            if(socialFile){
+                await bucketService.deleteSocialFile(socialPost.socialpostimage);
+            }
+
+            const dbSocialPost = await databaseService.updateSocialPost(socialPost.$id, {...data , socialpostimage: socialFile ? socialFile.$id : undefined})
+
+        } else {
+            const socialFile = await bucketService.uploadSocialFile(data.socialpostimage[0]);
+
+            if(socialFile){
+                const socialFileId = socialFile.$id;
+                data.socialpostimage = socialFileId;
+
+                const dbSocialPost = await databaseService.createSocialPost({...data , creatorId: userData.$id , creatorName: userData.name})
+                console.log(dbSocialPost);
+            }
+        }
     }
 
 

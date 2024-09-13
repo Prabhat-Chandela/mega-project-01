@@ -77,12 +77,12 @@ export class DatabaseService {
         }
     }
 
-    async createSocialPost({ caption, postimage, tags, creatorId, creatorName }) {
+    async createSocialPost({ caption, socialpostimage, tags, creatorId, creatorName }) {
         try {
             return await this.databases.createDocument(config.appwriteDatabaseId, config.appwriteSocialCollectionId, ID.unique(),
                 {
                     caption,
-                    postimage, 
+                    socialpostimage, 
                     tags, 
                     creatorId, 
                     creatorName
