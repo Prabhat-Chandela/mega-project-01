@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, SecondaryButton } from '../components/index';
+import { Container, SecondaryButton, UserBlogPosts, UserSocialPosts } from '../components/index';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { FaUserCircle, FaBookmark } from "react-icons/fa";
@@ -7,13 +7,12 @@ import { FaRegCircleUser } from "react-icons/fa6";
 import { MdAlternateEmail } from "react-icons/md";
 import { IoMdAddCircle, IoMdAddCircleOutline } from "react-icons/io";
 import { IoGrid, IoGridOutline } from "react-icons/io5";
-import {UserBlogPosts} from '../components/index';
 
 function Profile() {
     const navigate = useNavigate()
     const userStatus = useSelector((state) => state.auth.status);
     const userData = useSelector((state) => state.auth.userData);
-    const [showBlogPost, setShowBlogPost] = useState(true)
+    const [showBlogPost, setShowBlogPost] = useState(false);
 
     useEffect(() => {
 
@@ -84,7 +83,7 @@ function Profile() {
 
                             <button onClick={()=> setShowBlogPost(true)} className={`col-span-3 ${showBlogPost?'text-orange-500' : 'text-white'} text-sm lg:text-lg xl:text-xl  p-2 border-l border-white flex items-center justify-center gap-2`}><span><IoGridOutline /></span>Blog Posts</button>
                         </div>
-                        {showBlogPost ? (<UserBlogPosts />) : (<div>No Social posts to show</div>)}
+                        {showBlogPost ? (<UserBlogPosts />) : (<UserSocialPosts/>)}
                     </section>
 
 

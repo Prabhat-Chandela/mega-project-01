@@ -16,6 +16,7 @@ import HeroShowcaseOne from "./HeroShowcaseOne/HeroShowcaseOne";
 import SecondaryButton from "./SecondaryButton/SecondaryButton";
 import UserBlogPosts from "./UserBlogPosts/UserBlogPosts";
 import SocialPostForm from "./SocialPostForm/SocialPostForm";
+import UserSocialPosts from "./UserSocialPosts/UserSocialPosts";
 
 export {
     Header,
@@ -35,5 +36,6 @@ export {
     HeroShowcaseOne,
     SecondaryButton,
     UserBlogPosts,
-    SocialPostForm
+    SocialPostForm,
+    UserSocialPosts
 }
